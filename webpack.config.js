@@ -23,27 +23,8 @@ module.exports = {
         },
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          // Translates CSS into CommonJS
-          {
-            loader: "css-loader",
-            options: {
-              // Use liquid expressions for asset resolution
-              // Example: url("{{ logo.svg | asset_url }}");
-              url: false,
-            },
-          },
-          // Compiles Sass to CSS
-          {
-            loader: "sass-loader",
-            options: {
-              // Prefer `dart-sass`
-              implementation: require("sass"),
-            },
-          },
-        ],
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
     ],
   },
